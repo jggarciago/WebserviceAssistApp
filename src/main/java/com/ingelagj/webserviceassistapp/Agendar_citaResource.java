@@ -5,8 +5,8 @@
  */
 package com.ingelagj.webserviceassistapp;
 
-import java.math.BigDecimal;
-import javax.json.Json;
+import coneccionModelo.AgendarCitaModelo;
+import javax.json.JsonObject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -14,48 +14,47 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
- * REST Web Service
+ * Servicio REST para Android de Agendar Cita
  *
- * @author Admin
+ * @author Jose Gustavo García
+ * @author Juan Pablo Sánchez
  */
-@Path("agendar_cita")
+@Path("agendar")
 public class Agendar_citaResource {
 
     @Context
     private UriInfo context;
-
-    /**
-     * Creates a new instance of Agendar_citaResource
-     */
-    public Agendar_citaResource() {
+    
+    private AgendarCitaModelo modelo;
+    
+    public Agendar_citaResource(){
+        modelo = new AgendarCitaModelo();
     }
 
     /** TODO
      * Retorna los enfermeros
-     * Retrieves representation of an instance of com.ingelagj.webserviceassistapp.Agendar_citaResource
-     * @return an instance of java.lang.String
+     * @return 
      */
     @GET
     @Path("consultarEnfermeros")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response consultarEnfermeros() {
-        return Response.ok().entity(Json.createObjectBuilder().add("idEnfermero", "123456789")).build();
+    public JsonObject consultarEnfermeros() {
+        //Llamar al modelo
+        return modelo.consultarEnfermeros();
     }
 
     /** TODO
      * Agenda la cita
-     * POST method for updating or creating an instance of Agendar_citaResource
      * @param content representation for the resource
+     * @return 
      */
     @POST
     @Path("agendarCita")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void agendarCita(String content) {
+    public void agendarCita(JsonObject content) {
     }  
     
 }
