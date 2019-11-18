@@ -33,6 +33,9 @@ public class Agendar_citaResource {
     public Agendar_citaResource(){
         modelo = new AgendarCitaModelo();
     }
+    public Agendar_citaResource(AgendarCitaModelo modelo){
+        this.modelo = modelo;
+    }
 
     /** TODO
      * Retorna los enfermeros
@@ -42,7 +45,6 @@ public class Agendar_citaResource {
     @Path("consultarEnfermeros")
     @Produces(MediaType.APPLICATION_JSON)
     public JsonObject consultarEnfermeros() {
-        //Llamar al modelo
         return modelo.consultarEnfermeros();
     }
 

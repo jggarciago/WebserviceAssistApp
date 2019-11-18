@@ -5,6 +5,7 @@
  */
 package coneccionModelo;
 
+import java.math.BigDecimal;
 import javax.json.Json;
 import javax.json.JsonObject;
 
@@ -15,11 +16,17 @@ import javax.json.JsonObject;
  */
 public class AgendarCitaModelo {
     
-    /**TODO
+    /**
+     * 
      * 
      * @return 
      */
     public JsonObject consultarEnfermeros(){
-        return Json.createObjectBuilder().add("idEnfermero", "123456789").build();
+        return Json.createObjectBuilder().add("enfermeros",Json.createArrayBuilder()
+                .add(Json.createObjectBuilder().add("idEnfermero", "123456789").add("nombreEnfermero", "Javier Hernandez"))
+                .add(Json.createObjectBuilder().add("idEnfermero", "987654321").add("nombreEnfermero", "Carlos Fuentes"))
+        ).build();
     }
+    
+    
 }
